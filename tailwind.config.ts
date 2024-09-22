@@ -13,7 +13,15 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
     },
+    hljs: {
+      theme: "github-dark",
+    },
   },
-  plugins: [],
+  plugins: [require("tailwind-highlightjs")],
+  safelist: [
+    {
+      pattern: /hljs+/,
+    },
+  ],
 };
 export default config;
