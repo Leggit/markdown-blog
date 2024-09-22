@@ -1,4 +1,5 @@
 import { getAllPostsData } from "@/lib/blog-posts";
+import { useMDXComponents } from "@/mdx-components";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import rehypeHighlight from "rehype-highlight";
@@ -13,6 +14,8 @@ function BlogPost({ params: { slug } }: any) {
   const { content, metadata } = allPostsData.find(
     (post) => post.slug === slug
   )!;
+  const mdxComponents = useMDXComponents({});
+
   return (
     <main>
       <header>
@@ -25,6 +28,7 @@ function BlogPost({ params: { slug } }: any) {
           options={{
             mdxOptions: { rehypePlugins: [rehypeHighlight] },
           }}
+          components={mdxComponents}
         />
       </article>
     </main>
